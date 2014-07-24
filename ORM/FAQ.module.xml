@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<skipper version="3.0.0.1104" mvc="Symfony2" orm="Doctrine2">
+  <module name="FAQBundle" import-format="Doctrine2Php" import-path="../Entity" uuid="e369bb11-b83c-48b8-83ef-75c9cacd1ed0">
+    <entity name="Faq" description="Stores FAQ definitions." uuid="1bb8b691-6525-46a9-96e8-ca080c5b6139">
+      <field name="id" description="System given id." type="integer" size="10" required="true" unique="true" primary="true" auto-increment="true" uuid="005137d4-0d2b-4c22-82e7-439da8515867"/>
+      <field name="date_added" description="Date when faq is added." type="datetime" required="true" uuid="fc91c370-76a5-49ab-8cca-9c9aebee325b"/>
+      <field name="date_updated" description="Date when faq is last updated." type="datetime" required="true" unique="true" uuid="b3b71597-7958-4d60-9b11-a97aad7361f0"/>
+      <field name="category" description="FAQ category." type="integer" size="10" required="true" uuid="c65a97b7-0ee0-4b8c-835d-1f3dc8602423"/>
+      <field name="site" description="Site that faq belongs to." type="integer" size="10" uuid="17644073-c57f-4fd1-bd6e-9d93dcf152b6"/>
+      <index name="idx_u_faq_id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <index name="idx_n_faq_date_added">
+        <index-field name="date_added"/>
+      </index>
+      <index name="idx_n_faq_date_updated">
+        <index-field name="date_updated"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">faq</attribute>
+        <attribute name="export-file-name">Faq.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="Faq" to="FaqCategory" caption="idx_f_faq_category" owner-alias="faqs" inverse-alias="faq_category" uuid="7fc11bec-7f36-4da0-b082-86e917fdcef0">
+      <association-field from="category" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="Faq" to="Site" caption="idx_f_faq_site" inverse-alias="site" uuid="58e8d4fa-8f7a-41ca-8a43-0b2b31eadafa">
+      <association-field from="site" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="FaqCategory" description="Stores faq category definitions." uuid="34ed515b-77f0-4a8a-8bbd-609b18adc78a">
+      <field name="id" description="System given id." type="integer" size="10" required="true" unique="true" primary="true" auto-increment="true" uuid="fdd710bf-d1f3-471c-95a4-b954e96a3589"/>
+      <field name="date_added" description="Date when faq category is added." type="datetime" required="true" uuid="0fa834b0-34ce-42e0-b148-241516f681f2"/>
+      <field name="count_items" description="Number of faqs associated with the category." type="integer" size="10" default="0" required="true" uuid="4f78bdf0-7031-4155-bcae-adcbb575ddd8"/>
+      <field name="site" description="Site that faq group belongs to." type="integer" size="10" uuid="8fc2b6b0-6506-411f-ac0e-56c2a4fba98f"/>
+      <index name="idx_u_faq_category_id" unique="true">
+        <index-field name="id"/>
+      </index>
+      <index name="idx_n_faq_category_date_added">
+        <index-field name="date_added"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="engine">innodb</attribute>
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_Turkish_ci</attribute>
+        </attribute>
+        <attribute name="table">faq_category</attribute>
+        <attribute name="export-file-name">FaqCategory.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="FaqLocalization" description="Stores localized values for each faq." uuid="43300ae4-d53d-4ff2-8b59-91882bfda72b">
+      <field name="faq" description="Localized faq." type="integer" size="10" required="true" primary="true" uuid="607620d6-0828-4fcd-8a8f-1ecac9b3932a"/>
+      <field name="language" description="Localization language." type="integer" size="5" required="true" primary="true" uuid="ae430aed-6ca1-42c3-bae6-7cdb6675bed1"/>
+      <field name="title" description="Localized title / question." type="string" size="155" required="true" uuid="38d14c59-aeb6-4cfc-a604-4e2f75f1294b"/>
+      <field name="url_key" description="Localized url key." type="string" size="255" required="true" uuid="d5ad4ef6-09db-433f-a4b5-62db70ac44c2"/>
+      <field name="content" description="Localized content / answer." type="text" required="true" uuid="769d4611-c697-4224-ba93-52d9438f99c8"/>
+      <index name="idx_u_faq_localization" unique="true">
+        <index-field name="faq"/>
+        <index-field name="language"/>
+      </index>
+      <index name="idx_u_faq_localization_url_key" unique="true">
+        <index-field name="language"/>
+        <index-field name="url_key"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">faq_localization</attribute>
+        <attribute name="export-file-name">FaqLocalization.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="FaqLocalization" to="Faq" caption="idx_f_faq_localization_faq" owner-alias="localizations" inverse-alias="faq" uuid="7abbc02f-6ac3-4ce6-b88a-139e1b0a5862">
+      <association-field from="faq" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="FaqLocalization" to="Language" caption="idx_f_faq_localization_language" inverse-alias="language" uuid="b7b0e12f-edec-4e14-832a-bd8c18bc2101">
+      <association-field from="language" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <entity name="FaqCategoryLocalization" description="Stores localized values for each faq category entry." uuid="0d39a80f-7fb3-4957-8171-c206b5f5e6bd">
+      <field name="category" description="Localized category." type="integer" size="10" required="true" primary="true" uuid="828de620-74b5-4934-acce-f8eff985297b"/>
+      <field name="language" description="Localization language." type="integer" size="5" required="true" primary="true" uuid="815f79c6-a984-4e2c-a8fd-1828086ee338"/>
+      <field name="name" description="Localized name." type="string" size="155" required="true" uuid="c3f04e9a-c937-41cb-bf99-05de6ef288fc"/>
+      <field name="url_key" description="Localized url key of faq." type="string" size="255" required="true" uuid="4316843e-847b-4669-b395-30f7d320b04b"/>
+      <field name="description" description="Localized description." type="string" size="255" uuid="3bcb7b2b-0cd7-47e7-b5e7-6e8bccd26095"/>
+      <index name="idx_u_faq_category_localization" unique="true">
+        <index-field name="category"/>
+        <index-field name="language"/>
+      </index>
+      <index name="idx_u_faq_category_localization_url_key" unique="true">
+        <index-field name="language"/>
+        <index-field name="url_key"/>
+      </index>
+      <orm-attributes>
+        <attribute name="options">
+          <attribute name="charset">utf8</attribute>
+          <attribute name="collate">utf8_turkish_ci</attribute>
+          <attribute name="engine">innodb</attribute>
+        </attribute>
+        <attribute name="table">faq_category_localization</attribute>
+        <attribute name="export-file-name">FaqCategoryLocalization.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="FaqCategoryLocalization" to="Language" caption="idx_f_faq_category_localization_language" inverse-alias="language" uuid="c5352c1e-4c48-49b8-98dc-ad69c0dc2996">
+      <association-field from="language" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <association from="FaqCategoryLocalization" to="FaqCategory" caption="idx_f_faq_category_localization_category" owner-alias="localizations" inverse-alias="faq_category" uuid="a6364ad7-b579-49b8-af7e-95b34357da62">
+      <association-field from="category" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+      </orm-attributes>
+    </association>
+    <comment caption="FAQBundle Pricing" description="faq: 150 TL&#10;faq_localization: 150 TL&#10;faq_category: 105 TL&#10;faq_category_localization: 150 TL&#10;&#10;toplam: 555 TL" uuid="3e4fdce4-53c2-4228-9200-88218962d8fa"/>
+    <orm-attributes>
+      <attribute name="namespace">BiberLtd\Core\Bundles\FAQBundle\Entity</attribute>
+      <attribute name="filename-format">entity-name-only</attribute>
+      <attribute name="file-suffix">without-suffix</attribute>
+    </orm-attributes>
+  </module>
+  <visual-data>
+    <entity uuid="0d39a80f-7fb3-4957-8171-c206b5f5e6bd" bg-color="4294967295" hdr-color="4292006610" position-x="450" position-y="400" size-x="0" size-x2="124" size-y="0" size-y2="87"/>
+    <entity uuid="1bb8b691-6525-46a9-96e8-ca080c5b6139" bg-color="4294967295" hdr-color="4292006610" position-x="199" position-y="50" size-x="0" size-x2="126" size-y="0" size-y2="87"/>
+    <entity uuid="34ed515b-77f0-4a8a-8bbd-609b18adc78a" bg-color="4294967295" hdr-color="4292006610" position-x="200" position-y="400" size-x="0" size-x2="129" size-y="0" size-y2="73"/>
+    <comment uuid="3e4fdce4-53c2-4228-9200-88218962d8fa" bg-color="4294948765" position-x="0" position-y="14" size-x="0" size-x2="148" size-y="0" size-y2="92" txt-color="4278190080"/>
+    <entity uuid="43300ae4-d53d-4ff2-8b59-91882bfda72b" bg-color="4294967295" hdr-color="4292006610" position-x="450" position-y="150" size-x="0" size-x2="110" size-y="0" size-y2="87"/>
+    <module uuid="e369bb11-b83c-48b8-83ef-75c9cacd1ed0" bg-color="4291276800" size-x="0" size-x2="650" size-y="0" size-y2="600"/>
+  </visual-data>
+</skipper>

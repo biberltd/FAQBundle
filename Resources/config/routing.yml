@@ -1,0 +1,14 @@
+biberltd_core_gallery_test_model:
+    pattern:  galleries/{sortcolumn}/{sortorder}/{gallery_number}
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryList }
+    pattern:  galleries/{gallery_id_or_code}
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryEdit }
+    pattern:  galleries/new
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryNew }
+    pattern:  galleries/delete
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryDelete }
+    pattern:  galleries/upload
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryUpload}
+    pattern:  galleries/{file_type}/{sortcolumn}/{sortorder}/{page_number} 
+    defaults: { _controller: BiberLtdCoreBundlesContentManagementBundle:Manage:galleryListFiles}
+    
