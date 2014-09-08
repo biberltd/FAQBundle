@@ -19,7 +19,7 @@
  *
  */
 
-namespace BiberLtd\Core\Bundles\FAQBundle\Controller;
+namespace BiberLtd\Bundle\FAQBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller,
     Symfony\Component\HttpKernel\Exception,

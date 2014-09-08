@@ -1,11 +1,11 @@
 <?php
 
-namespace BiberLtd\Core\Bundles\FAQBundle;
+namespace BiberLtd\Bundle\FAQBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class BiberLtdCoreBundlesFAQBundle extends Bundle
+class BiberLtdBundleFAQBundle extends Bundle
 {
 
 }

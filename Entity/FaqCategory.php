@@ -14,7 +14,7 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\FAQBundle\Entity;
+namespace BiberLtd\Bundle\FAQBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 use BiberLtd\Core\CoreLocalizableEntity;
 
@@ -52,13 +52,13 @@ class FaqCategory extends  CoreLocalizableEntity
     private $site;
 
     /**
-     * @ORM\OneToMany(targetEntity="BiberLtd\Core\Bundles\FAQBundle\Entity\Faq", mappedBy="faq_category")
+     * @ORM\OneToMany(targetEntity="BiberLtd\Bundle\FAQBundle\Entity\Faq", mappedBy="faq_category")
      */
     private $faqs;
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="BiberLtd\Core\Bundles\FAQBundle\Entity\FaqCategoryLocalization",
+     *     targetEntity="BiberLtd\Bundle\FAQBundle\Entity\FaqCategoryLocalization",
      *     mappedBy="faq_category"
      * )
      */

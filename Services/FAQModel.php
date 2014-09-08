@@ -37,15 +37,15 @@
  *                               RESOURCES/TRANSLATIONS FOLDER FOR EACH LANGUAGE.
  */
 
-namespace BiberLtd\Core\Bundles\FAQBundle\Services;
+namespace BiberLtd\Bundle\FAQBundle\Services;
 
 /** Extends CoreModel */
 use BiberLtd\Core\CoreModel;
 /** Entities to be used */
-use BiberLtd\Core\Bundles\FAQBundle\Entity as BundleEntity;
+use BiberLtd\Bundle\FAQBundle\Entity as BundleEntity;
 /** Helper Models */
-use BiberLtd\Core\Bundles\FAQBundle\Services as SMMService;
-use BiberLtd\Core\Bundles\MultiLanguageSupportBundle\Services as MLSService;
+use BiberLtd\Bundle\FAQBundle\Services as SMMService;
+use BiberLtd\Bundle\MultiLanguageSupportBundle\Services as MLSService;
 /** Core Service */
 use BiberLtd\Core\Services as CoreServices;
 

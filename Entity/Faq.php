@@ -14,7 +14,7 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\FAQBundle\Entity;
+namespace BiberLtd\Bundle\FAQBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 use BiberLtd\Core\CoreLocalizableEntity;
 
@@ -50,18 +50,18 @@ class Faq extends CoreLocalizableEntity
     public $date_updated;
 
     /** 
-     * @ORM\OneToMany(targetEntity="BiberLtd\Core\Bundles\FAQBundle\Entity\FaqLocalization", mappedBy="faq")
+     * @ORM\OneToMany(targetEntity="BiberLtd\Bundle\FAQBundle\Entity\FaqLocalization", mappedBy="faq")
      */
     protected $localizations;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\FAQBundle\Entity\FaqCategory", inversedBy="faqs")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\FAQBundle\Entity\FaqCategory", inversedBy="faqs")
      * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $faq_category;
 
     /** 
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\SiteManagementBundle\Entity\Site")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\SiteManagementBundle\Entity\Site")
      * @ORM\JoinColumn(name="site", referencedColumnName="id", onDelete="CASCADE")
      */
     private $site;

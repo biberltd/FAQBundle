@@ -1,6 +1,6 @@
 <?php
 
-namespace BiberLtd\Core\Bundles\FAQBundle\DependencyInjection;
+namespace BiberLtd\Bundle\FAQBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
