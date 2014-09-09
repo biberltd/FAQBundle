@@ -37,17 +37,17 @@
  *                               RESOURCES/TRANSLATIONS FOLDER FOR EACH LANGUAGE.
  */
 
-namespace BiberLtd\Core\Bundles\FAQBundle\Services;
+namespace BiberLtd\Bundle\FAQBundle\Services;
 
 /** Extends CoreModel */
-use BiberLtd\Core\CoreModel;
+use BiberLtd\Bundle\CoreBundle\CoreModel;
 /** Entities to be used */
-use BiberLtd\Core\Bundles\FAQBundle\Entity as BundleEntity;
+use BiberLtd\Bundle\FAQBundle\Entity as BundleEntity;
 /** Helper Models */
-use BiberLtd\Core\Bundles\FAQBundle\Services as SMMService;
-use BiberLtd\Core\Bundles\MultiLanguageSupportBundle\Services as MLSService;
+use BiberLtd\Bundle\FAQBundle\Services as SMMService;
+use BiberLtd\Bundle\MultiLanguageSupportBundle\Services as MLSService;
 /** Core Service */
-use BiberLtd\Core\Services as CoreServices;
+use BiberLtd\Bundle\CoreBundle\Services as CoreServices;
 
 class FAQModel extends CoreModel {
     /**
@@ -633,7 +633,7 @@ class FAQModel extends CoreModel {
                         }
                     }
                 }
-                $this->insert_entities($l_collection, 'BiberLtd\Core\\Bundles\\FAQBundle\\Entity\\FaqLocalization');
+                $this->insert_entities($l_collection, 'BiberLtd\Bundle\CoreBundle\\Bundles\\FAQBundle\\Entity\\FaqLocalization');
                 /**
                  * ????? DO we really need this?
                  *
@@ -1387,7 +1387,7 @@ class FAQModel extends CoreModel {
                         }
                     }
                 }
-                $this->insert_entities($l_collection, 'BiberLtd\Core\\Bundles\\FAQBundle\\Entity\\FaqCategoryLocalization');
+                $this->insert_entities($l_collection, 'BiberLtd\Bundle\CoreBundle\\Bundles\\FAQBundle\\Entity\\FaqCategoryLocalization');
                 /**
                  * ????? DO we really need this?
                  *

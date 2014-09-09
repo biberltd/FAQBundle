@@ -133,7 +133,7 @@
     </association>
     <comment caption="FAQBundle Pricing" description="faq: 150 TL&#10;faq_localization: 150 TL&#10;faq_category: 105 TL&#10;faq_category_localization: 150 TL&#10;&#10;toplam: 555 TL" uuid="3e4fdce4-53c2-4228-9200-88218962d8fa"/>
     <orm-attributes>
-      <attribute name="namespace">BiberLtd\Core\Bundles\FAQBundle\Entity</attribute>
+      <attribute name="namespace">BiberLtd\Bundle\FAQBundle\Entity</attribute>
       <attribute name="filename-format">entity-name-only</attribute>
       <attribute name="file-suffix">without-suffix</attribute>
     </orm-attributes>

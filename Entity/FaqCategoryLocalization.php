@@ -1,7 +1,7 @@
 <?php
 /**
  * @name        FaqCategoryLocalization
- * @package		BiberLtd\Core\FAQBundle
+ * @package		BiberLtd\Bundle\CoreBundle\FAQBundle
  *
  * @author		Murat Ünal
  *
@@ -14,9 +14,9 @@
  * @description Model / Entity class.
  *
  */
-namespace BiberLtd\Core\Bundles\FAQBundle\Entity;
+namespace BiberLtd\Bundle\FAQBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
-use BiberLtd\Core\CoreEntity;
+use BiberLtd\Bundle\CoreBundle\CoreEntity;
 
 /** 
  * @ORM\Entity
@@ -48,14 +48,14 @@ class FaqCategoryLocalization extends CoreEntity
 
     /** 
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\MultiLanguageSupportBundle\Entity\Language")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\MultiLanguageSupportBundle\Entity\Language")
      * @ORM\JoinColumn(name="language", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $language;
 
     /** 
      * @ORM\Id
-     * @ORM\ManyToOne(targetEntity="BiberLtd\Core\Bundles\FAQBundle\Entity\FaqCategory", inversedBy="localizations")
+     * @ORM\ManyToOne(targetEntity="BiberLtd\Bundle\FAQBundle\Entity\FaqCategory", inversedBy="localizations")
      * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=false, onDelete="CASCADE")
      */
     private $faq_category;
