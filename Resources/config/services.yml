@@ -1,7 +1,4 @@
-parameters:
-#    biber_ltd_faq.example.class: BiberLtd\Bundle\FAQBundle\Example
-
 services:
-#    biber_ltd_faq.example:
-#        class: %biber_ltd_faq.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    filemanagement.model:
+        class:        BiberLtd\Bundle\FileManagementBundle\Services\FileManagementModel
+        arguments:    [@kernel, "default", "doctrine"]
